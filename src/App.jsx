@@ -1,10 +1,10 @@
-
+import Navbar from './components/shared/Navbar';
 function App() {
   
 
   return (
-    <div>
-      <h1 className="text-red-500">Lets build gmail together</h1>
+    <div className=' bg-[#f6f8fc] w-screen h-screen'>
+      <Navbar/>
     </div>
   )
 }
