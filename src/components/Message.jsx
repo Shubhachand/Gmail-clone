@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const Message = () => {
     const Navigate = useNavigate();
+    
     const openMail = () => {
         Navigate("/mail/1234567r89r")
     }
