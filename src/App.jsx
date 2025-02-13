@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/shared/Navbar";
 import Sidebar from "./components/Sidebar";
 import Body from "./components/Body";
 import Inbox from "./components/Inbox";

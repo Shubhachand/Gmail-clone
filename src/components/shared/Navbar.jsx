@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
+// import { Link, NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { CiCircleQuestion } from "react-icons/ci";
 import { AiTwotoneSetting } from "react-icons/ai";
 import { TbGridDots } from "react-icons/tb";
 import { RiGeminiFill } from "react-icons/ri";
 import Avatar from "react-avatar";
-import GeminiSidebar from "./GeminiSidebar"; // Import Gemini Sidebar
+// import { useNavigate } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import GeminiSidebar from "../GeminiSidebar"; // Import Gemini Sidebar
 
 function Navbar() {
   const [aiOpen, setAiOpen] = useState(false);
@@ -18,11 +21,13 @@ function Navbar() {
           <div className="p-2 rounded-full hover:bg-gray-200 cursor-pointer">
             <RxHamburgerMenu />
           </div>
-          <img
-            className="w-8"
-            src="https://w7.pngwing.com/pngs/758/665/png-transparent-new-logo-gmail-google-new-logos-icon-thumbnail.png"
-            alt="gmail logo"
-          />
+          
+            <img 
+              className="w-8"
+              src="https://w7.pngwing.com/pngs/758/665/png-transparent-new-logo-gmail-google-new-logos-icon-thumbnail.png"
+              alt="gmail logo"
+            />
+         
           <h1 className="text-xl text-gray-600 font-medium">Gmail</h1>
         </div>
 

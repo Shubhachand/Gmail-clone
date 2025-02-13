@@ -2,6 +2,8 @@ import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from "react";
 import { setOpen } from "../redux/appSlice";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../Firebase";
 const SendMail = () => {
   const [formData,setFormData] = useState({
     to:"",
@@ -14,15 +16,21 @@ const SendMail = () => {
     const changeHandler = (e) => {
       setFormData({...formData,[e.target.name]: e.target.value});
     }
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
       e.preventDefault();
-      console.log(formData);
+      await addDoc(collection(db, "emails"), {
+        to: formData.to,
+        subject: formData.subject,
+        message: formData.message,
+        createdAt: serverTimestamp()
+      })
+    
+      dispatch(setOpen(false));
       setFormData({
         to: "",
         subject: "",
         message: ""
-      });
-      dispatch(setOpen(false));
+      }); 
     }
   return (
     <div className={`${open ? 'block' : 'hidden'} bg-white max-w-6xl shadow-xl shadow-slate-600 rounded-t-md`}>
@@ -36,7 +44,7 @@ const SendMail = () => {
         <input   onChange={changeHandler} value={formData.to} name="to" type="text" placeholder="To" className="outline-none py-1" />
         <input   onChange={changeHandler} value={formData.subject} name="subject" type="text" placeholder="Subject" className="outline-none py-1" />
         <textarea   onChange={changeHandler} value={formData.message} name="message" cols={'30'} rows={'10'} placeholder="Write your message here..." className="outline-none py-3" />
-        <button type="submit"  className="bg-[#0B57D0] w-fit px-4 text-white font-medium">Send</button>
+        <button type="submit"  className="bg-[#0B57D0] w-fit px-4 text-white rounded-full font-medium">Send</button>
       </form>
     </div>
   );

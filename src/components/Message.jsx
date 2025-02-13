@@ -1,13 +1,16 @@
 import React from "react";
 import { MdCropSquare } from "react-icons/md";
 import { RiStarLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-const Message = () => {
+import { setSelectedEmail } from "../redux/appSlice";
+const Message = ({email}) => {
+  // const email = props.email;
     const Navigate = useNavigate();
-    
+    const dispatch = useDispatch();
     const openMail = () => {
-        Navigate("/mail/1234567r89r")
+      dispatch(setSelectedEmail(email))
+        Navigate(`/mail/${email.id}`);
     }
   return (
     <div onClick={openMail} className="flex  items-start justify-between border-b border-gray-200 px-4 py-3 text-sm hove:cursor-pointer hover:shadow-md">
@@ -19,11 +22,13 @@ const Message = () => {
           <RiStarLine className="w-5 h-5" />
         </div>
         <div className="flex-1 m1-4">
-          <p className="text-gray-600 truncate inline-block max-w-full"> I just recieved your mail Thansjdxkj kfh hkh ihflih</p>
+          <p className="text-gray-600 truncate inline-block max-w-full">{email?.message}</p>
         </div>
       </div>
         <div className="flex-none text-gray-400 text-sm">
-            <p>Time aayega</p>
+            <p>    {email?.createdAt?.seconds
+      ? new Date(email.createdAt.seconds * 1000).toLocaleString()
+      : "Invalid Date"}</p>
         </div>
     </div>
   );
