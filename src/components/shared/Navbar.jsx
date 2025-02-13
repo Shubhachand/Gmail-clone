@@ -9,7 +9,7 @@ import { RiGeminiFill } from "react-icons/ri";
 import Avatar from "react-avatar";
 // import { useNavigate } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
-import GeminiSidebar from "../GeminiSidebar"; // Import Gemini Sidebar
+// import GeminiSidebar from "../GeminiSidebar"; // Import Gemini Sidebar
 
 function Navbar() {
   const [aiOpen, setAiOpen] = useState(false);
@@ -50,12 +50,7 @@ function Navbar() {
             <AiTwotoneSetting size={"24px"} />
           </div>
           {/* Gemini Sidebar Toggle */}
-          <div
-            className="p-2 rounded-full hover:bg-gray-200 cursor-pointer"
-            onClick={() => setAiOpen(true)}
-          >
-            <RiGeminiFill size={"24px"} />
-          </div>
+          
           <div className="p-2 rounded-full hover:bg-gray-200 cursor-pointer">
             <TbGridDots size={"24px"} />
           </div>
